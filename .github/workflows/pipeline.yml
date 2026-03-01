@@ -21,7 +21,8 @@ jobs:
           $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
           pac
 
-      - name: Create Environment
+      - name: Authenticate to Dataverse
         run: |
-          pac auth create --environment ${{ secrets.ENVIRONMENT_ID }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+          pac auth create --url ${{ secrets.ENVIRONMENT_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+          pac auth who
       
