@@ -48,7 +48,6 @@ jobs:
         run: |
           pac auth create --url ${{ secrets.ENVIRONMENT_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
           pac auth who
-          pac env list
 
       - name: Publish App to Environment
         shell: pwsh
