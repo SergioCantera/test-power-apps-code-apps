@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '24'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -32,7 +32,7 @@ jobs:
         run: |
           dotnet tool install --global Microsoft.PowerApps.CLI.Tool
           $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
-          pac
+          pac --version
 
       - name: Verify power.config.json exists
         shell: pwsh
@@ -48,6 +48,7 @@ jobs:
         run: |
           pac auth create --url ${{ secrets.ENVIRONMENT_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
           pac auth who
+          pac env list
 
       - name: Publish App to Environment
         shell: pwsh
