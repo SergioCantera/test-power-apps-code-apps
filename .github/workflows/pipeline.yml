@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 env:
-  NAME: 'DEV'
+  SOLUTION_NAME: 'TestCodeApps'
 on:
   push:
     branches: [main]
@@ -25,4 +25,8 @@ jobs:
         run: |
           pac auth create --url ${{ secrets.ENVIRONMENT_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
           pac auth who
+
+      - name: Publish App to Environment
+        run: |
+          pac code push --solutionName ${{ env.SOLUTION_NAME }}
       
