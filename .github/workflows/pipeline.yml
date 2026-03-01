@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -44,11 +44,13 @@ jobs:
           }
 
       - name: Authenticate to Dataverse
+        shell: pwsh
         run: |
           pac auth create --url ${{ secrets.ENVIRONMENT_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
           pac auth who
 
       - name: Publish App to Environment
+        shell: pwsh
         run: |
           pac code push --solutionName ${{ env.SOLUTION_NAME }}
       
