@@ -31,12 +31,26 @@ jobs:
     runs-on: windows-latest
     needs: build
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
       - name: Install Power Platform CLI via .NET
         shell: pwsh
         run: |
           dotnet tool install --global Microsoft.PowerApps.CLI.Tool
           $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
           pac
+
+      - name: Verify power.config.json exists
+        shell: pwsh
+        run: |
+          if (-Not (Test-Path "./power.config.json")) {
+            Write-Error "power.config.json not found in $pwd"
+            Get-ChildItem -Force
+            exit 1
+          }
 
       - name: Authenticate to Dataverse
         run: |
