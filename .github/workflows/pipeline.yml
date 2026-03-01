@@ -1,4 +1,6 @@
 name: CI/CD Pipeline
+env:
+  NAME: 'DEV'
 on:
   push:
     branches: [main]
@@ -14,4 +16,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Create Environment
+        run: |
+          pac auth create --environment ${{ vars.ENVIRONMENT_ID }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
       
