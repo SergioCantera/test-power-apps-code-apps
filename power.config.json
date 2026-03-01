@@ -1,5 +1,5 @@
 {
-  "appId": null,
+  "appId": "6fb64827-a0f8-4aef-a969-c20d61184fad",
   "appDisplayName": "Power Apps Code App",
   "description": null,
   "environmentId": "420cf49e-527e-eaf3-9424-c703a5174951",
@@ -10,9 +10,7 @@
   "connectionReferences": {},
   "databaseReferences": {
     "default.cds": {
-      "state": "Configured",
-      "instanceUrl": "https://org5cdd496c.crm4.dynamics.com/",
-      "webApiVersion": "v9.0",
+      "databaseDetails": null,
       "dataSources": {
         "todos": {
           "entitySetName": "siero_todos",
@@ -20,8 +18,7 @@
           "isHidden": false
         }
       },
-      "version": "v9.0",
-      "environmentVariableName": ""
+      "actions": null
     }
   }
 }
