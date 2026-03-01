@@ -1,5 +1,9 @@
 node_modules/
 dist/
 .power/
+!.power/
+!.power/schemas/
+!.power/schemas/appschemas/
+!.power/schemas/appschemas/dataSourcesInfo.ts
 .env
 .DS_Store
