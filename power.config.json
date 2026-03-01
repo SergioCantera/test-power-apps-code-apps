@@ -8,5 +8,20 @@
   "logoPath": "Default",
   "localAppUrl": "http://localhost:3000/",
   "connectionReferences": {},
-  "databaseReferences": {}
+  "databaseReferences": {
+    "default.cds": {
+      "state": "Configured",
+      "instanceUrl": "https://org5cdd496c.crm4.dynamics.com/",
+      "webApiVersion": "v9.0",
+      "dataSources": {
+        "todos": {
+          "entitySetName": "siero_todos",
+          "logicalName": "siero_todo",
+          "isHidden": false
+        }
+      },
+      "version": "v9.0",
+      "environmentVariableName": ""
+    }
+  }
 }
