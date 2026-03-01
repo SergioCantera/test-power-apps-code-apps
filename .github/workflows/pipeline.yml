@@ -9,11 +9,28 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+       
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    steps:
       - name: Install Power Platform CLI via .NET
         shell: pwsh
         run: |
