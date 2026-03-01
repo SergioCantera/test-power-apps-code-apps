@@ -31,8 +31,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet tool install --global Microsoft.PowerApps.CLI.Tool
-          $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
-          pac
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Verify power.config.json exists
         shell: pwsh
@@ -52,11 +51,5 @@ jobs:
       - name: Publish App to Environment
         shell: pwsh
         run: |
-          try {
-            pac code push --solutionName '${{ env.SOLUTION_NAME }}'
-          }
-          catch {
-            Write-Warning "pac code push --solutionName failed (known PAC issue in some versions). Falling back to pac code push without solutionName."
-            pac code push --environment ${{ secrets.ENVIRONMENT_URL }}
-          }
+          pac code push --environment ${{ secrets.ENVIRONMENT_URL }} --solutionName "${{ env.SOLUTION_NAME }}"
       
