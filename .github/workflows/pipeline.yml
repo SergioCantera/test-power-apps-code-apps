@@ -11,11 +11,15 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Install Power Platform Tools
-        uses: microsoft/powerplatform-actions/actions-install@v1
-
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install Power Platform CLI via .NET
+        shell: pwsh
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+          $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
+          pac
 
       - name: Create Environment
         run: |
