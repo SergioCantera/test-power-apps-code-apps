@@ -52,5 +52,11 @@ jobs:
       - name: Publish App to Environment
         shell: pwsh
         run: |
-          pac code push --solutionName ${{ env.SOLUTION_NAME }}
+          try {
+            pac code push --solutionName '${{ env.SOLUTION_NAME }}'
+          }
+          catch {
+            Write-Warning "pac code push --solutionName failed (known PAC issue in some versions). Falling back to pac code push without solutionName."
+            pac code push --environment ${{ secrets.ENVIRONMENT_URL }}
+          }
       

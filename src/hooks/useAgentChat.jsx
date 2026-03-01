@@ -17,9 +17,9 @@ export const useTodoAgentChat = () => {
       const stats = getStats();
       return {
         todos: todos.map(t => ({
-          id: t.id,
-          text: t.text,
-          done: t.done
+          id: t.siero_todoid,
+          text: t.siero_name,
+          done: t.siero_done
         })),
         summary: {
           total: stats.total,
@@ -50,15 +50,15 @@ export const useTodoAgentChat = () => {
             
           case 'put':
             // Toggle todo status
-            if (action.payload?.id) {
-              toggleTodo(action.payload.id);
+            if (action.payload?.siero_todoid) {
+              toggleTodo(action.payload.siero_todoid);
             }
             break;
             
           case 'delete':
             // Delete todo
             if (action.payload?.id) {
-              deleteTodo(action.payload.id);
+              deleteTodo(action.payload.siero_todoid);
             }
             break;
         }

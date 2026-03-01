@@ -93,17 +93,17 @@ export const TodoList = () => {
           </div>
         ) : (
           todos.map(todo => (
-            <div key={todo.id} className="todo-item">
+            <div key={todo.siero_todoid} className="todo-item">
               <Checkbox
-                id={`todo-${todo.id}`}
-                checked={todo.done}
-                onChange={() => toggleTodo(todo.id)}
+                id={`todo-${todo.siero_todoid}`}
+                checked={todo.siero_done}
+                onChange={() => toggleTodo(todo.siero_todoid)}
               />
-              <Label htmlFor={`todo-${todo.id}`} done={todo.done}>
-                {todo.text}
+              <Label htmlFor={`todo-${todo.siero_todoid}`} done={todo.siero_done}>
+                {todo.siero_name}
               </Label>
               <button
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() => deleteTodo(todo.siero_todoid)}
                 className="btn-delete"
                 aria-label="Delete task"
               >

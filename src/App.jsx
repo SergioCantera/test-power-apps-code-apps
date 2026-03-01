@@ -1,4 +1,3 @@
-import React from 'react';
 import { TodoProvider } from './context/TodoContext.jsx';
 import { TodoList } from './components/TodoList.jsx';
 import { AgentChat } from './components/AgentChat.jsx';
