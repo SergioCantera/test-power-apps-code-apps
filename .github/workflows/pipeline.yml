@@ -26,16 +26,7 @@ jobs:
 
       - name: Build the app
         run: npm run build
-       
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          
+
       - name: Install Power Platform CLI via .NET
         shell: pwsh
         run: |
