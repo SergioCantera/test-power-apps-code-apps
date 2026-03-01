@@ -23,5 +23,5 @@ jobs:
 
       - name: Create Environment
         run: |
-          pac auth create --environment ${{ vars.ENVIRONMENT_ID }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+          pac auth create --environment ${{ secrets.ENVIRONMENT_ID }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
       
