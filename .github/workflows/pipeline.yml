@@ -32,7 +32,7 @@ jobs:
         run: |
           dotnet tool install --global Microsoft.PowerApps.CLI.Tool
           $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
-          pac --version
+          pac
 
       - name: Verify power.config.json exists
         shell: pwsh
